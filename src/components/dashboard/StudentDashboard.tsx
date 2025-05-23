@@ -75,8 +75,9 @@ const StudentDashboard: React.FC = () => {
                   "How do I solve quadratic equations?"
                 </p>
               </div>
-              <Button className="w-full" variant="outline" 
-                className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
+              <Button 
+                variant="outline" 
+                className="w-full border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
                 Ask AI Assistant
               </Button>
             </div>

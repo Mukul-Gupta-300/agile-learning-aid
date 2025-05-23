@@ -64,23 +64,27 @@ const TeacherDashboard: React.FC = () => {
             <CardDescription>Common tasks to get you started</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full justify-start" variant="outline" 
-              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
+            <Button 
+              className="w-full justify-start border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue" 
+              variant="outline">
               <PlusCircle className="h-4 w-4 mr-2" />
               Create New Lesson
             </Button>
-            <Button className="w-full justify-start" variant="outline"
-              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
+            <Button 
+              className="w-full justify-start border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue" 
+              variant="outline">
               <Calendar className="h-4 w-4 mr-2" />
               Schedule Class
             </Button>
-            <Button className="w-full justify-start" variant="outline"
-              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
+            <Button 
+              className="w-full justify-start border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue" 
+              variant="outline">
               <MessageCircle className="h-4 w-4 mr-2" />
               AI Assistant
             </Button>
-            <Button className="w-full justify-start" variant="outline"
-              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
+            <Button 
+              className="w-full justify-start border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue" 
+              variant="outline">
               <BarChart3 className="h-4 w-4 mr-2" />
               View Analytics
             </Button>
