@@ -68,13 +68,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed top-0 left-0 z-50 h-full w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 transform transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0',
+          'fixed top-0 left-0 z-50 h-full w-64 bg-white dark:bg-intel-darkblue border-r border-gray-200 dark:border-intel-darkgray transform transition-transform duration-200 ease-in-out lg:relative lg:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-b border-gray-200 dark:border-intel-darkgray">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-intel-blue rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">AI</span>
             </div>
             <span className="text-lg font-bold text-gray-900 dark:text-white">LearnAI</span>
@@ -92,7 +92,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 variant={isActive ? 'default' : 'ghost'}
                 className={cn(
                   'w-full justify-start',
-                  isActive && 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
+                  isActive && 'bg-intel-blue text-white'
                 )}
                 onClick={() => handleNavigation(item.path)}
               >
@@ -104,11 +104,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </nav>
 
         <div className="absolute bottom-4 left-4 right-4">
-          <div className="p-3 bg-blue-50 dark:bg-blue-900 rounded-lg">
-            <p className="text-sm text-blue-700 dark:text-blue-300 font-medium">
+          <div className="p-3 bg-intel-lightblue bg-opacity-10 dark:bg-intel-blue dark:bg-opacity-20 rounded-lg">
+            <p className="text-sm text-intel-darkblue dark:text-white font-medium">
               {user.role === 'student' ? 'Student' : 'Teacher'}
             </p>
-            <p className="text-xs text-blue-600 dark:text-blue-400">
+            <p className="text-xs text-intel-blue dark:text-intel-lightblue">
               {user.email}
             </p>
           </div>

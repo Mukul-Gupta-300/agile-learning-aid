@@ -13,8 +13,8 @@ const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, description })
     <div className="flex items-center justify-center min-h-[60vh]">
       <Card className="w-full max-w-md text-center">
         <CardHeader>
-          <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Construction className="h-8 w-8 text-blue-600 dark:text-blue-300" />
+          <div className="w-16 h-16 bg-intel-blue bg-opacity-10 dark:bg-intel-blue dark:bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Construction className="h-8 w-8 text-intel-blue dark:text-intel-lightblue" />
           </div>
           <CardTitle className="text-2xl">{title}</CardTitle>
           <CardDescription className="text-base">{description}</CardDescription>

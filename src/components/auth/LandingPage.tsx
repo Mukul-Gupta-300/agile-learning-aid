@@ -8,14 +8,14 @@ const LandingPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-intel-lightgray to-white dark:from-intel-darkgray dark:to-intel-darkblue">
       <Header showSidebarToggle={false} />
       
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             AI-Powered
-            <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent block">
+            <span className="bg-gradient-to-r from-intel-blue to-intel-lightblue bg-clip-text text-transparent block">
               Interactive Learning
             </span>
           </h1>
@@ -28,7 +28,7 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button 
               size="lg" 
-              className="px-8 py-4 text-lg"
+              className="px-8 py-4 text-lg bg-intel-blue hover:bg-intel-darkblue text-white"
               onClick={() => navigate('/signup')}
             >
               Get Started Free
@@ -36,7 +36,7 @@ const LandingPage: React.FC = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="px-8 py-4 text-lg"
+              className="px-8 py-4 text-lg border-intel-blue text-intel-blue dark:text-white dark:border-white"
               onClick={() => navigate('/login')}
             >
               Sign In
@@ -44,8 +44,8 @@ const LandingPage: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white dark:bg-intel-darkblue p-6 rounded-2xl shadow-lg">
+              <div className="w-12 h-12 bg-intel-lightblue bg-opacity-20 dark:bg-intel-blue dark:bg-opacity-30 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🤖</span>
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">AI Assistant</h3>
@@ -54,8 +54,8 @@ const LandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white dark:bg-intel-darkblue p-6 rounded-2xl shadow-lg">
+              <div className="w-12 h-12 bg-intel-lightblue bg-opacity-20 dark:bg-intel-blue dark:bg-opacity-30 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📚</span>
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Live Classes</h3>
@@ -64,8 +64,8 @@ const LandingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
-              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white dark:bg-intel-darkblue p-6 rounded-2xl shadow-lg">
+              <div className="w-12 h-12 bg-intel-lightblue bg-opacity-20 dark:bg-intel-blue dark:bg-opacity-30 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📊</span>
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Smart Analytics</h3>

@@ -69,10 +69,10 @@ const SignupForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-intel-darkgray px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 bg-intel-blue rounded-lg flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-lg">AI</span>
           </div>
           <CardTitle className="text-2xl">Join LearnAI</CardTitle>
@@ -158,7 +158,7 @@ const SignupForm: React.FC = () => {
 
             <Button 
               type="submit" 
-              className="w-full" 
+              className="w-full bg-intel-blue hover:bg-intel-darkblue" 
               disabled={isLoading}
             >
               {isLoading ? 'Creating account...' : 'Create Account'}
@@ -168,7 +168,7 @@ const SignupForm: React.FC = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Already have an account?{' '}
-              <Link to="/login" className="text-blue-600 hover:text-blue-700 font-medium">
+              <Link to="/login" className="text-intel-blue hover:text-intel-darkblue font-medium">
                 Sign in
               </Link>
             </p>

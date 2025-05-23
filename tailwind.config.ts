@@ -62,6 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Add Intel-specific color palette
+				intel: {
+					blue: '#0071c5',
+					darkblue: '#005a9e',
+					lightblue: '#00a3e0',
+					gray: '#969696',
+					lightgray: '#f3f3f3',
+					darkgray: '#333333',
 				}
 			},
 			borderRadius: {

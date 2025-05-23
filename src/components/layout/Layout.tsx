@@ -13,11 +13,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (!user) {
-    return <div className="min-h-screen bg-gray-50 dark:bg-gray-900">{children}</div>;
+    return <div className="min-h-screen bg-gray-50 dark:bg-intel-darkgray">{children}</div>;
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-intel-darkgray">
       <div className="lg:flex">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         

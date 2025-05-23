@@ -20,18 +20,18 @@ const TeacherDashboard: React.FC = () => {
   ];
 
   const stats = [
-    { label: 'Total Students', value: '156', icon: Users, color: 'bg-blue-500' },
-    { label: 'Classes Today', value: '4', icon: Calendar, color: 'bg-green-500' },
-    { label: 'Avg. Engagement', value: '87%', icon: BarChart3, color: 'bg-purple-500' },
-    { label: 'Pending Reviews', value: '12', icon: Clock, color: 'bg-orange-500' },
+    { label: 'Total Students', value: '156', icon: Users, color: 'bg-intel-blue' },
+    { label: 'Classes Today', value: '4', icon: Calendar, color: 'bg-intel-lightblue' },
+    { label: 'Avg. Engagement', value: '87%', icon: BarChart3, color: 'bg-intel-darkblue' },
+    { label: 'Pending Reviews', value: '12', icon: Clock, color: 'bg-intel-gray' },
   ];
 
   return (
     <div className="space-y-6">
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl p-6 text-white">
+      <div className="bg-gradient-to-r from-intel-darkblue to-intel-blue rounded-2xl p-6 text-white">
         <h1 className="text-3xl font-bold mb-2">Welcome back, {user?.name}! 👨‍🏫</h1>
-        <p className="text-green-100">Ready to inspire minds today?</p>
+        <p className="text-blue-100">Ready to inspire minds today?</p>
       </div>
 
       {/* Stats Grid */}
@@ -64,19 +64,23 @@ const TeacherDashboard: React.FC = () => {
             <CardDescription>Common tasks to get you started</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline" 
+              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
               <PlusCircle className="h-4 w-4 mr-2" />
               Create New Lesson
             </Button>
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline"
+              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
               <Calendar className="h-4 w-4 mr-2" />
               Schedule Class
             </Button>
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline"
+              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
               <MessageCircle className="h-4 w-4 mr-2" />
               AI Assistant
             </Button>
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline"
+              className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
               <BarChart3 className="h-4 w-4 mr-2" />
               View Analytics
             </Button>
@@ -93,7 +97,7 @@ const TeacherDashboard: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             {upcomingClasses.map((classItem) => (
-              <div key={classItem.id} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <div key={classItem.id} className="flex items-center justify-between p-4 bg-intel-lightgray dark:bg-gray-800 rounded-lg">
                 <div>
                   <h4 className="font-medium">{classItem.title}</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -101,12 +105,12 @@ const TeacherDashboard: React.FC = () => {
                   </p>
                 </div>
                 <div className="space-x-2">
-                  <Button size="sm" variant="outline">Prepare</Button>
-                  <Button size="sm">Start Class</Button>
+                  <Button size="sm" variant="outline" className="border-intel-blue text-intel-blue dark:border-intel-lightblue dark:text-intel-lightblue">Prepare</Button>
+                  <Button size="sm" className="bg-intel-blue hover:bg-intel-darkblue">Start Class</Button>
                 </div>
               </div>
             ))}
-            <Button variant="ghost" className="w-full">
+            <Button variant="ghost" className="w-full text-intel-blue dark:text-intel-lightblue">
               View Full Schedule
             </Button>
           </CardContent>
@@ -123,7 +127,7 @@ const TeacherDashboard: React.FC = () => {
           <div className="space-y-4">
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex items-start space-x-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                <div className="w-2 h-2 bg-intel-blue rounded-full mt-2"></div>
                 <div className="flex-1">
                   <p className="font-medium">{activity.action}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">

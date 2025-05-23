@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar, showSidebarToggle = tr
   };
 
   return (
-    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
+    <header className="bg-white dark:bg-intel-darkblue border-b border-gray-200 dark:border-intel-darkgray px-4 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {showSidebarToggle && (
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar, showSidebarToggle = tr
           )}
           
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-intel-blue rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">AI</span>
             </div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -68,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar, showSidebarToggle = tr
                 <DropdownMenuItem
                   key={language.code}
                   onClick={() => setLanguage(language.code)}
-                  className={currentLanguage === language.code ? 'bg-blue-50 dark:bg-blue-900' : ''}
+                  className={currentLanguage === language.code ? 'bg-intel-lightblue dark:bg-intel-blue' : ''}
                 >
                   {language.nativeName} ({language.name})
                 </DropdownMenuItem>
@@ -81,8 +81,8 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar, showSidebarToggle = tr
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center">
-                    <User className="h-4 w-4 text-blue-600 dark:text-blue-300" />
+                  <div className="w-8 h-8 bg-intel-lightblue dark:bg-intel-blue rounded-full flex items-center justify-center">
+                    <User className="h-4 w-4 text-white" />
                   </div>
                   <span className="hidden sm:inline font-medium">{user.name}</span>
                 </Button>

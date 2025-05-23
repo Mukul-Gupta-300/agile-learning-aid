@@ -28,7 +28,7 @@ const StudentDashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-blue-500 to-green-500 rounded-2xl p-6 text-white">
+      <div className="bg-gradient-to-r from-intel-blue to-intel-lightblue rounded-2xl p-6 text-white">
         <h1 className="text-3xl font-bold mb-2">Hello, {user?.name}! 👋</h1>
         <p className="text-blue-100">Ready to learn something new today?</p>
       </div>
@@ -44,14 +44,14 @@ const StudentDashboard: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             {upcomingClasses.map((classItem) => (
-              <div key={classItem.id} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <div key={classItem.id} className="flex items-center justify-between p-3 bg-intel-lightgray dark:bg-gray-800 rounded-lg">
                 <div>
                   <h4 className="font-medium">{classItem.title}</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     {classItem.teacher} • {classItem.time}
                   </p>
                 </div>
-                <Button size="sm">Join</Button>
+                <Button size="sm" className="bg-intel-blue hover:bg-intel-darkblue">Join</Button>
               </div>
             ))}
           </CardContent>
@@ -70,12 +70,13 @@ const StudentDashboard: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="p-3 bg-blue-50 dark:bg-blue-900 rounded-lg">
-                <p className="text-sm text-blue-700 dark:text-blue-300">
+              <div className="p-3 bg-intel-lightblue bg-opacity-10 dark:bg-intel-blue dark:bg-opacity-20 rounded-lg">
+                <p className="text-sm text-intel-blue dark:text-intel-lightblue">
                   "How do I solve quadratic equations?"
                 </p>
               </div>
-              <Button className="w-full" variant="outline">
+              <Button className="w-full" variant="outline" 
+                className="border-intel-blue text-intel-blue hover:bg-intel-lightblue hover:bg-opacity-10 dark:border-intel-lightblue dark:text-intel-lightblue">
                 Ask AI Assistant
               </Button>
             </div>
@@ -100,7 +101,7 @@ const StudentDashboard: React.FC = () => {
                     <h4 className="font-medium">{topic.title}</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400">{topic.date}</p>
                   </div>
-                  <Button variant="ghost" size="sm">View Notes</Button>
+                  <Button variant="ghost" size="sm" className="text-intel-blue hover:text-intel-darkblue dark:text-intel-lightblue">View Notes</Button>
                 </div>
               ))}
             </div>
@@ -124,7 +125,7 @@ const StudentDashboard: React.FC = () => {
                     <span>78%</span>
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div className="bg-blue-500 h-2 rounded-full" style={{ width: '78%' }}></div>
+                    <div className="bg-intel-blue h-2 rounded-full" style={{ width: '78%' }}></div>
                   </div>
                 </div>
                 <div>
@@ -133,7 +134,7 @@ const StudentDashboard: React.FC = () => {
                     <span>12/15</span>
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '80%' }}></div>
+                    <div className="bg-intel-lightblue h-2 rounded-full" style={{ width: '80%' }}></div>
                   </div>
                 </div>
               </div>
@@ -150,7 +151,7 @@ const StudentDashboard: React.FC = () => {
             <CardContent>
               <div className="space-y-3">
                 {notifications.map((notification) => (
-                  <div key={notification.id} className="p-2 text-sm border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900">
+                  <div key={notification.id} className="p-2 text-sm border-l-4 border-intel-blue bg-intel-lightblue bg-opacity-10 dark:bg-intel-blue dark:bg-opacity-10">
                     <p className="text-gray-700 dark:text-gray-300">{notification.message}</p>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{notification.time}</p>
                   </div>
