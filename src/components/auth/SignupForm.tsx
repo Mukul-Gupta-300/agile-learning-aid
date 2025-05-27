@@ -1,5 +1,6 @@
-
+// src/components/SignupForm.tsx
 import React, { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,8 @@ const SignupForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [role, setRole] = useState<'student' | 'teacher'>('student');
   const [errors, setErrors] = useState<Record<string, string>>({});
   
@@ -53,16 +56,37 @@ const SignupForm: React.FC = () => {
     if (!validateForm()) return;
 
     try {
-      await signup(email, password, name, role);
+      console.log('Starting signup process...');
+      await signup(email, password, name.trim(), role);
+      console.log('Signup successful, showing toast...');
+      
       toast({
         title: "Account created!",
         description: "Welcome to LearnAI. Let's get started!",
       });
-      navigate('/dashboard');
-    } catch (error) {
+      
+      // Add a small delay to ensure the auth context is fully updated
+      setTimeout(() => {
+        console.log('Navigating to dashboard...');
+        navigate('/dashboard', { replace: true });
+      }, 100);
+      
+    } catch (error: any) {
+      console.error('Signup error:', error);
+      let errorMessage = "Failed to create account. Please try again.";
+      
+      // Handle specific Firebase Auth errors
+      if (error.message.includes('email-already-in-use')) {
+        errorMessage = "An account with this email already exists.";
+      } else if (error.message.includes('weak-password')) {
+        errorMessage = "Password is too weak. Please choose a stronger password.";
+      } else if (error.message.includes('invalid-email')) {
+        errorMessage = "Invalid email address.";
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to create account. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     }
@@ -92,6 +116,7 @@ const SignupForm: React.FC = () => {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your full name"
                 className={errors.name ? 'border-red-500' : ''}
+                disabled={isLoading}
               />
               {errors.name && (
                 <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -107,6 +132,7 @@ const SignupForm: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className={errors.email ? 'border-red-500' : ''}
+                disabled={isLoading}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -115,14 +141,25 @@ const SignupForm: React.FC = () => {
 
             <div>
               <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Create a password"
-                className={errors.password ? 'border-red-500' : ''}
-              />
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Create a password"
+                  className={errors.password ? 'border-red-500' : ''}
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                  disabled={isLoading}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {errors.password && (
                 <p className="text-red-500 text-sm mt-1">{errors.password}</p>
               )}
@@ -130,14 +167,25 @@ const SignupForm: React.FC = () => {
 
             <div>
               <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirm your password"
-                className={errors.confirmPassword ? 'border-red-500' : ''}
-              />
+              <div className="relative">
+                <Input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm your password"
+                  className={errors.confirmPassword ? 'border-red-500' : ''}
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                  disabled={isLoading}
+                >
+                  {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {errors.confirmPassword && (
                 <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>
               )}
@@ -145,7 +193,11 @@ const SignupForm: React.FC = () => {
 
             <div>
               <Label htmlFor="role">I am a</Label>
-              <Select value={role} onValueChange={(value: 'student' | 'teacher') => setRole(value)}>
+              <Select 
+                value={role} 
+                onValueChange={(value: 'student' | 'teacher') => setRole(value)}
+                disabled={isLoading}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Select your role" />
                 </SelectTrigger>
@@ -168,7 +220,11 @@ const SignupForm: React.FC = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Already have an account?{' '}
-              <Link to="/login" className="text-intel-blue hover:text-intel-darkblue font-medium">
+              <Link 
+                to="/login" 
+                className="text-intel-blue hover:text-intel-darkblue font-medium"
+                tabIndex={isLoading ? -1 : 0}
+              >
                 Sign in
               </Link>
             </p>
