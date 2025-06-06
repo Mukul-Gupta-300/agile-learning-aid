@@ -1,10 +1,9 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Layout from "@/components/layout/Layout";
@@ -16,6 +15,12 @@ import Dashboard from "@/pages/Dashboard";
 import Profile from "@/pages/Profile";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
+
+// Custom component to handle redirection based on auth status
+const HomeRedirect = () => {
+  const { user } = useAuth(); // adjust based on your actual context shape
+  return user ? <Navigate to="/dashboard" replace /> : <LandingPage />;
+};
 
 const queryClient = new QueryClient();
 
@@ -30,22 +35,22 @@ const App = () => (
             <BrowserRouter>
               <Layout>
                 <Routes>
-                  <Route path="/" element={<LandingPage />} />
+                  <Route path="/" element={<HomeRedirect />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
-                  
+
                   <Route path="/dashboard" element={
                     <ProtectedRoute>
                       <Dashboard />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/profile" element={
                     <ProtectedRoute>
                       <Profile />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/live" element={
                     <ProtectedRoute allowedRoles={['student']}>
                       <PlaceholderPage 
@@ -54,7 +59,7 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/resources" element={
                     <ProtectedRoute allowedRoles={['student']}>
                       <PlaceholderPage 
@@ -63,7 +68,7 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/chatbot" element={
                     <ProtectedRoute>
                       <PlaceholderPage 
@@ -72,7 +77,7 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/notes" element={
                     <ProtectedRoute allowedRoles={['student']}>
                       <PlaceholderPage 
@@ -81,7 +86,7 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/quizzes" element={
                     <ProtectedRoute allowedRoles={['student']}>
                       <PlaceholderPage 
@@ -90,7 +95,7 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/create" element={
                     <ProtectedRoute allowedRoles={['teacher']}>
                       <PlaceholderPage 
@@ -99,7 +104,7 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/schedule" element={
                     <ProtectedRoute allowedRoles={['teacher']}>
                       <PlaceholderPage 
@@ -108,7 +113,7 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   <Route path="/analytics" element={
                     <ProtectedRoute allowedRoles={['teacher']}>
                       <PlaceholderPage 
@@ -117,11 +122,11 @@ const App = () => (
                       />
                     </ProtectedRoute>
                   } />
-                  
+
                   {/* Redirect old paths */}
                   <Route path="/dashboard/student" element={<Navigate to="/dashboard" replace />} />
                   <Route path="/dashboard/teacher" element={<Navigate to="/dashboard" replace />} />
-                  
+
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Layout>

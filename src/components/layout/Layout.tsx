@@ -12,6 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { user, isLoading } = useAuth();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Define routes that should not show the authenticated layout
   const publicRoutes = ['/', '/login', '/signup'];
@@ -40,20 +41,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   // For authenticated users on protected routes, show full layout with sidebar
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-intel-darkgray">
-      <div className="lg:flex">
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    <div className="min-h-screen bg-gray-50 dark:bg-intel-darkgray flex">
+      <Sidebar 
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)}
+        isCollapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+      />
+      
+      <div className="flex-1 flex flex-col min-h-screen">
+        <Header 
+          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+          showSidebarToggle={true}
+        />
         
-        <div className="flex-1 lg:ml-0">
-          <Header 
-            onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-            showSidebarToggle={true}
-          />
-          
-          <main className="p-4 lg:p-6">
-            {children}
-          </main>
-        </div>
+        <main className="flex-1 p-4 lg:p-6 overflow-auto">
+          {children}
+        </main>
       </div>
     </div>
   );
