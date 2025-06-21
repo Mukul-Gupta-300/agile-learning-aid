@@ -16,9 +16,16 @@ import Profile from "@/pages/Profile";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 
+// Import the new student pages
+import StudentLiveClasses from "./components/dashboard/StudentLiveClass";
+import StudentResources from "./components/dashboard/StudentResources";
+import StudentChatbot from "./components/dashboard/StudentChatbot";
+import StudentNotes from "./components/dashboard/StudentNotes";
+import StudentQuizzes from "./components/dashboard/StudentQuizzes";
+
 // Custom component to handle redirection based on auth status
 const HomeRedirect = () => {
-  const { user } = useAuth(); // adjust based on your actual context shape
+  const { user } = useAuth();
   return user ? <Navigate to="/dashboard" replace /> : <LandingPage />;
 };
 
@@ -51,51 +58,38 @@ const App = () => (
                     </ProtectedRoute>
                   } />
 
+                  {/* Student Routes */}
                   <Route path="/live" element={
                     <ProtectedRoute allowedRoles={['student']}>
-                      <PlaceholderPage 
-                        title="Live Classes" 
-                        description="Join interactive live sessions with your teachers and classmates." 
-                      />
+                      <StudentLiveClasses />
                     </ProtectedRoute>
                   } />
 
                   <Route path="/resources" element={
                     <ProtectedRoute allowedRoles={['student']}>
-                      <PlaceholderPage 
-                        title="Learning Resources" 
-                        description="Access your course materials, videos, and study guides." 
-                      />
+                      <StudentResources />
                     </ProtectedRoute>
                   } />
 
                   <Route path="/chatbot" element={
                     <ProtectedRoute>
-                      <PlaceholderPage 
-                        title="AI Assistant" 
-                        description="Get instant help with your questions using our AI-powered assistant." 
-                      />
+                      <StudentChatbot />
                     </ProtectedRoute>
                   } />
 
                   <Route path="/notes" element={
                     <ProtectedRoute allowedRoles={['student']}>
-                      <PlaceholderPage 
-                        title="My Notes" 
-                        description="Review and organize your lesson notes and summaries." 
-                      />
+                      <StudentNotes />
                     </ProtectedRoute>
                   } />
 
                   <Route path="/quizzes" element={
                     <ProtectedRoute allowedRoles={['student']}>
-                      <PlaceholderPage 
-                        title="Quizzes & Assessments" 
-                        description="Take quizzes and track your learning progress." 
-                      />
+                      <StudentQuizzes />
                     </ProtectedRoute>
                   } />
 
+                  {/* Teacher Routes - keeping as placeholders for now */}
                   <Route path="/create" element={
                     <ProtectedRoute allowedRoles={['teacher']}>
                       <PlaceholderPage 
